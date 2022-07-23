@@ -1,0 +1,158 @@
+****Recursion****
+
+***factorial 
+
+#include <iostream>
+
+using namespace std;
+
+void fact(int n)
+{
+    if(n==0)
+    return ;
+   cout<<n<<" ";//54321
+    fact(n-1);
+  cout<<n<<" ";//12345
+   
+}
+int main(){
+  fact(5);
+}
+
+
+*****Sum of digits
+
+#include <iostream>
+
+using namespace std;
+
+int SumOfDigits(int n)
+{
+   if(n < 10){
+       return n;
+   }
+    return (n%10) +SumOfDigits(n/10);
+   
+}
+int main(){
+  int n;
+  cin>>n;
+  cout<<SumOfDigits(n);
+}
+
+***Reverse of number;
+
+//1st approach
+
+#include <iostream>
+using namespace std;
+
+int ReverseOfDigits(int n, int &rev){
+
+if(n < 10){
+rev = rev * 10 + n;
+return rev;
+}
+
+rev = (rev * 10) + (n % 10);
+
+n = n / 10;
+
+ReverseOfDigits(n, rev);
+
+return rev;
+
+}
+
+
+int main() {
+
+int n, rev = 0;
+cin >> n;
+cout << ReverseOfDigits(n, rev);
+
+}
+
+--2nd approach'
+
+#include <iostream>
+using namespace std;
+
+int reverse(int x){
+int rev = 0;
+while(x!=0){
+rev = rev*10 + x%10;
+x = x/10;
+}
+
+return rev;
+}
+
+int main() {
+
+int n = 0;
+cin >> n;
+
+cout <<reverse(n) << endl;
+
+}
+
+***REverse String
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+
+#include <iostream>
+using namespace std;
+
+string  reverseStr(string str){
+ int n= str.length();
+ if(n<=1)
+ return str;
+ string rev = "";
+ rev =rev + str[n - 1 ];
+ string ans = reverseStr(str.substr(0,n - 1));
+ rev = rev + ans;
+ return rev;
+ 
+}
+
+int main() {
+ string str;
+ cin>>str;
+ //cout<<str.substr(1 , 4);
+cout<<reverseStr(str);
+
+}
+
+// 2 nd approach
+#include <iostream>
+using namespace std;
+
+string  reverseStr(string str , int n , string &rev){
+ //int n= str.length();
+ if(n==0)
+ {
+     return "";
+ }
+ 
+ rev =rev + str[n];
+ reverseStr( str , n - 1 , rev);
+ return rev;
+ 
+}
+
+int main() {
+ string str;
+ cin>>str;
+ string rev = "";
+ //cout<<str.substr(1 , 4);
+cout<<reverseStr(str , str.length() - 1 , rev);
+
+}
+

@@ -1,0 +1,276 @@
+Array: find max and min in 2d array 
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+   int row,col;
+   cin>>row>>col;
+   int arr[row][col];
+   for(int i=0;i<row;i++){
+       for(int j=0;j<col;j++){
+           cin>>arr[i][j];
+       }
+   }
+   int max=arr[0][0];
+   int min=arr[0][0];
+   for(int i=0;i<row;i++){
+       for(int j=0;j<col;j++){
+           if(arr[0][0]<min){
+               min=arr[i][j];
+           }
+           else if(arr[i][j]>max){
+               max=arr[i][j];
+           }
+       }
+   }
+   cout<<max<<" "<<min;
+}
+
+
+Array in stack memory:
+int arr[n];
+--------------------------------------
+Array in heap memory
+int *arr =new int[n];
+-------------------------------------
+Array in 2d:
+int arr[m][n];
+----------------------------------------
+Create 2d array in heap
+int **arr=new int*[m]; //it stores another array
+for(int i=0;i<m;i++){
+arr[i]=new int [n];
+}
+
+--------------------------
+Pattern1
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    for(int i=0;i<5;i++){
+        for(int j=0;j<=i;j++){
+            cout<<"*"<<" ";
+        }cout<<endl;
+    }
+    
+
+    return 0;
+}
+
+Pattern2
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    for(int i=1;i<=5;i++){
+        for(int j=1;j<=i;j++){
+            cout<<j<<" ";
+        }cout<<endl;
+    }
+    
+
+    return 0;
+}
+
+Pattern3#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    for(int i=5;i>=1;i--){
+        for(int j=5;j>=i;j--){
+            cout<<j<<" ";
+        }cout<<endl;
+    }
+    
+
+    return 0;
+}
+
+
+Mehod2
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+int n;
+cin>>n;
+    for(int i=1;i<=5;i++){
+        for(int j=1;j<=i;j++){
+            cout<<n-j+1<<" ";
+        }cout<<endl;
+    }
+    
+
+    return 0;
+}
+
+Pattern3
+#include<iostream>
+using namespace std;
+
+int main()
+{
+int temp = 1;
+for(int i = 1; i <= 4; i++)
+{
+for(int j = 1; j <= i; j++)
+{
+cout<<temp<<" ";
+temp++;
+}
+cout<<'\n';
+}
+
+return 0;
+}
+
+Pattern4
+#include<iostream>
+using namespace std;
+
+int main()
+{ int n;
+cin>>n;
+int temp = 1;
+for(int i = 1; i <= n; i++)
+{ //put spaces
+    for(int j=1;j<n-i;j++){
+        cout<<" ";
+    }
+for(int j = 1; j <= i; j++)
+{
+cout<<j;
+
+}
+cout<<'\n';
+}
+
+
+return 0;
+}
+
+
+Pattern 5:
+#include<iostream>
+using namespace std;
+
+int main ()
+{
+  int n;
+  cin >> n;
+
+  for (int i = 1; i <= n; i++)
+    {				//put spaces
+      for (int j = 1; j < n - i; j++)
+	{
+	  cout << " ";
+	}
+      for (int j = 1; j <= 2 * i - 1; j++)
+	{
+	  cout << "*";
+
+	}
+
+      cout << '\n';
+    }
+
+
+  return 0;
+}
+
+Pattern 6:
+#include <iostream>
+
+using namespace std;
+
+int main() {
+
+int n;
+cin >> n;
+
+
+for(int i = 1; i <= n; i++){
+
+
+for(int j = 1; j <= n - i; j++){
+cout << " ";
+}
+
+for(int j = 1; j <= 2 * i - 1; j++){
+
+cout << "*";
+
+}
+cout << '\n';
+}
+int count=2 *(n-1) - 1;
+for(int i=1;i<n;i++){
+    for(int j=1;j<=i;j++){
+        cout<<" ";
+    }
+    for(int j=1;j<=count;j++){
+        cout<< "*";
+    }
+    count= count - 2;
+    cout<<'\n';
+}
+
+}
+
+MOre efficient code (Method2):
+#include <iostream>
+
+using namespace std;
+
+int main() {
+
+int n;
+cin >> n;
+
+
+for(int i = 1; i <= n; i++){
+
+for(int j = 1; j <= n - i; j++){
+cout << " ";
+}
+
+for(int j = 1; j <= 2 * i - 1; j++){
+
+cout << "*";
+
+}
+cout << '\n';
+}
+
+
+for(int i = 1; i < n; i++){
+
+for(int j = 1; j <= i; j++){
+cout << " ";
+}
+
+for(int j = 1; j <= 2 * (n - i) - 1; j++){
+cout << "*";
+}
+
+
+cout << '\n';
+}
+
+
+}
+
+   
+   return 0;
+}

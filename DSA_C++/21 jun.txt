@@ -1,0 +1,154 @@
+/******************************************************************************/
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    string str;
+    cin>>str;
+    int freq[26] = {0};
+    for(int i =0; i<str.length();i++){
+        char ch = str[i];   //d
+        int index = ch - 'a'; 
+        freq[index]++;
+        
+    }
+    for(int i = 0 ;i< 16 ;i++){
+        cout<<(char)('a'+ i) <<"->"<< freq[i]<<endl;
+    }
+    
+
+    return 0;
+}
+****
+//2nd approch
+#include <iostream>
+
+using namespace std;
+/* aaaaassssaaaaddddrrredasd
+// asdre
+5 0 0 4 1 0 0 0 0 0 0 0 0 0 0 3 4 0 0 0 0 0 0 0 0 0 0
+*/
+
+int main()
+{
+    string str;
+    cin>>str;
+    int freq[26] = {0};
+    string  ans ="";
+    for(int i =0; i<str.length();i++){
+        char ch = str[i];   //'c' a->1 b->2 c->3
+        int index = ch - 'a';  //'c' -'a' =99-97=26
+        
+        if(freq[index] == 0){
+            ans = ans + ch;
+        }
+        freq[index]++;
+        
+    }
+ 
+    
+cout<<ans;
+    return 0;
+}
+
+
+/******************************************************************************/
+
+//if string has more than 1 time than not printed
+#include <iostream>
+
+using namespace std;
+/* aaaaassssaaaaddddrrredasd
+// asdre
+5 0 0 4 1 0 0 0 0 0 0 0 0 0 0 3 4 0 0 0 0 0 0 0 0 0 0
+*/
+
+int main()
+{
+    string str;
+    cin>>str;
+    int freq[26] = {0};
+    string  ans ="";
+    
+    for(char ch :  str){
+        
+        freq[ch - 'a']++;
+        
+    }
+    for(char ch : str){
+        if(freq[ch - 'a'] == 1){
+            ans = ans + ch;
+        }
+    }
+  
+    
+cout<<ans;
+    return 0;
+}
+
+// factorial 
+#include <iostream>
+
+using namespace std;
+
+int factorial(int n){
+    if(n ==0 || n==1){
+        return 1;
+    }
+    return n * factorial(n - 1);
+}
+int main()
+{
+    int n;
+    cin>>n;
+    cout << factorial(n) << endl;
+}
+
+// fiboni numb
+#include <iostream>
+
+using namespace std;
+
+int fib(int n){
+    if(n==0 || n ==1)
+    return 1;
+    
+    return fib(n - 1) + fib(n - 2) ;
+}
+int main()
+{
+    int n;
+    cin>>n;
+    cout << fib(n);
+}
+
+//
+/*********************************************************************************************/
+
+// sum of fibo series
+#include <iostream>
+
+using namespace std;
+
+int fib(int n , int &sum){
+    if(n ==1){
+        return 0;
+    }
+    if(n==2){
+        return 1;
+    }
+    int pasialAns = fib(n - 1 , sum) + fib(n - 2 , sum) ;
+    sum = sum + pasialAns;
+    return pasialAns;
+}
+int main()
+{
+    int n;
+    cin>>n;
+    int sum  = 0;
+    cout << fib(n,sum)<<" ";
+    cout<<sum;
+}

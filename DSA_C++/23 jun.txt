@@ -1,0 +1,138 @@
+QUICK Sort
+TIME COMPLEXITY : N logN , N^2(Worst Case)
+ 
+#include <iostream>
+
+using namespace std;
+int fun(int arr[], int start ,int end){
+    int key = arr[end];
+    int i = start - 1;  //i =-1
+    //int j = start;  //i = 0
+    for( int j = start ;j< end; j++){
+        if(arr[j] < key){
+            i++;
+            swap(arr[i], arr[j]);
+        }
+    }
+    
+    swap(arr[i+1],arr[end]);
+    return i + 1;
+}
+void QuickSort(int arr[],int start , int end){
+    if(start < end){
+        int pok = fun(arr , start ,end);
+        QuickSort(arr, start , pok - 1);
+        QuickSort(arr, pok + 1 , end);
+    }
+}
+int main()
+{
+    int n;
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+QuickSort(arr,0,n-1);
+for(int i=0;i<n;i++){
+        cout<<arr[i]<<" ";
+    }
+
+    return 0;
+}
+
+
+
+**** Randomized Quick Sort**
+#include <iostream>
+using namespace std;
+
+int fun(int arr[], int start, int end){
+int key = arr[end];
+int i = start - 1;
+
+for(int j = start; j < end; j++){
+if(arr[j] < key){
+i++;
+swap(arr[i],arr[j]);
+}
+}
+
+swap(arr[i+1], arr[end]);
+
+return i + 1;
+}
+
+void quickSort(int arr[], int start, int end){
+
+if(start < end){
+
+int pok = fun(arr, start, end);
+
+quickSort(arr,start, pok - 1);
+quickSort(arr,pok + 1, end);
+}
+}
+
+int main() {
+int n;
+cin >> n;
+int arr[n];
+
+for(int i = 0; i < n; i++){
+cin >> arr[i];
+}
+srand(time(NULL));
+
+ //int n = rand()// give randome value
+    //cout<< n % 25 // it give randome value less  than equal 25
+
+for(int i = n - 1; i > 0; i--){
+int index = rand() % i;
+swap(arr[index],arr[i]);
+}
+
+
+for(int i = 0; i < n; i++){
+cout << arr[i] << " ";
+}
+
+
+quickSort(arr,0,n-1);
+
+for(int i = 0; i < n; i++){
+cout << arr[i] << " ";
+}
+}
+******bit manupulation ********
+
+
+// number divisible by  4 without % operator
+int main(){
+int n = 16;
+if( ((n & 1) == 0 ) && ((n >> 1) & 1) ==0){
+cout<<"Yes";
+}
+//n>>1 means divided by 2
+}
+
+
+*****count bits
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+int n = 7;
+int count = 0;
+while(n != 0){
+    if((n & 1) == 1){
+       count ++; 
+    }
+    n = n >> 1;
+}
+
+cout<<count;
+}
+

@@ -1,0 +1,192 @@
+*****Struct & class -> By default members of struct are public and  classes are private
+  class Student{
+public:
+class Student{
+
+public :
+// default constructor ? Not the default construct -> 9953064899
+// Default constructor will be called or made by compiler whenever it is needed i.e -> not everytime
+
+int id;
+string name;
+};
+ int main(){
+Student obj;
+obj.id = 1;
+obj.name = " Hank";
+ Student obj1;
+ obj1. id = 2;
+obj.name = "Walt";
+ cout<< obj.id <<" "<<obj.name<<"\n";
+ cout<< obj.id <<" "<<obj1.name<<"\n";
+}
+
+//Default constructor
+#include <iostream>
+
+using namespace std;
+
+ class Student{
+
+public :
+ 
+ Student(){
+     cout <<"cons called \n";
+ }
+ 
+int id;
+string name;
+
+};
+
+ int main()
+ {
+Student obj;
+obj.id = 1;
+obj.name = " Hank";
+
+Student arr[4];
+arr[0].id = 10;
+arr[0].name ="Jaanvi";
+
+arr[1] =obj;
+
+}
+
+///Parameterize constructor
+
+#include <iostream>
+
+using namespace std;
+
+ class Student{
+
+public :
+ int id;
+string name;
+ Student( int id , string name){
+     cout <<"cons called \n";
+     //id = idx;  // if i write same name of constructor like id = id then compiler  will not print name bcz not  ununder  which id 
+     //name = namex ;
+     // or we can write like this
+     this->id = id;
+     this->name = name;
+     
+      }
+      void show(){
+        cout<<id <<"  and "<<name;
+      }
+ 
+ 
+
+
+};
+
+ int main()
+ {
+Student obj(1, "Jaanvi");
+//cout<<obj.id <<"  and "<<obj.name;
+obj.show();
+}
+
+// Overloaing a constructor
+#include <iostream>
+using namespace std;
+
+// struct & classes -> By Default mambes of struct are public and classes are private
+
+class Student{
+int id;
+string name;
+
+public :
+
+Student(){
+cout << "cons called \n";
+}
+
+Student(int id, string name){
+cout << " int , string = cons called \n";
+this->id = id;
+this->name = name;
+
+}
+
+Student(string name){
+cout << "string = cons called \n";
+id = 19;
+this->name = name;
+}
+
+Student(int id){
+cout << " int = cons called \n";
+this->id = id;
+this->name = "Hank";
+}
+void show(){
+cout << id << " " << name << '\n';
+}
+};
+
+int main() {
+Student obj(4);
+obj.show();
+}
+
+//
+#include <iostream>
+using namespace std;
+
+// struct & classes -> By Default mambes of struct are public and classes are private
+
+class Student{
+int id;
+string name;
+
+public :
+
+Student(){
+cout << "cons called \n";
+}
+
+Student(int id, string name){
+cout << " int , string = cons called \n";
+this->id = id;
+this->name = name;
+
+}
+
+Student(string name){
+cout << "string = cons called \n";
+id = 19;
+this->name = name;
+}
+
+Student(int id){
+cout << " int = cons called \n";
+this->id = id;
+this->name = "Hank";
+}
+//Funcion overloading-> same name and same return type ->> this will called compile time -->>this is compile time polymorphism
+int sum(){
+ return 0;
+}
+int sum(int a, int b){
+    return (a + b);
+}
+int sum(int a, int b , int c){
+    return (a + b + c);
+}
+void show(){
+    cout<<id<<' '<<name<<"\n";
+}
+//function overriding -> Run time polymorphism(later)
+};
+
+int main() {
+Student obj(4);
+obj.show();
+cout<<obj.sum(3,5,7);
+}
+
+**** sagarjangra530@gmail.com  ****

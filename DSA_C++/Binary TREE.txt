@@ -1,0 +1,319 @@
+binary tree: 
+#include <iostream>
+
+using namespace std;
+class Node{
+    public:
+int data;
+Node* left;
+Node* right;
+
+Node(int data){
+    this->data = data;
+    left = NULL;
+    right = NULL;
+}
+
+};
+int main()
+{
+    Node *root = new Node(4);
+    Node *lcr = new Node(8);
+    root->left = lcr;
+    //root->left = new Node(3);
+    root->right = new Node(5);
+    lcr->left = new Node(1);
+    lcr->right = new Node(9);
+    lcr->left->left = new Node(2);
+    lcr->left->right = new Node(7);
+ 
+
+    return 0;
+}
+Traverse
+preorder : Root [left] [right]
+
+#include <iostream>
+
+using namespace std;
+class Node{
+    public:
+int data;
+Node* left;
+Node* right;
+
+Node(int data){
+    this->data = data;
+    left = NULL;
+    right = NULL;
+}
+
+};
+void preorder(Node* root){
+    if(root == NULL){
+        return;
+    }
+    cout<< root->data<<" ";
+    preorder(root->left);
+    preorder(root->right);
+}
+int main()
+{
+    Node *root = new Node(4);
+    Node *lcr = new Node(8);
+    root->left = lcr;
+    //root->left = new Node(3);
+    root->right = new Node(5);
+    lcr->left = new Node(1);
+    lcr->right = new Node(9);
+    lcr->left->left = new Node(2);
+    lcr->left->right = new Node(7);
+ preorder(root);
+
+    return 0;
+}
+
+in-order :
+left [root] [right]
+post-oder:
+left [right] [root]
+**********************************Traversal tech***************
+#include <iostream>
+
+using namespace std;
+class Node{
+    public:
+int data;
+Node* left;
+Node* right;
+
+Node(int data){
+    this->data = data;
+    left = NULL;
+    right = NULL;
+}
+
+};
+void preorder(Node* root){
+    if(root == NULL){
+        return;
+    }
+    cout<< root->data<<" ";
+    preorder(root->left);
+    preorder(root->right);
+}
+void inorder(Node* root){
+    if(root == NULL){
+        return;
+    }
+    
+    inorder(root->left);
+    cout<< root->data<<" ";
+    inorder(root->right);
+}
+void postorder(Node* root){
+    if(root == NULL){
+        return;
+    }
+    
+    postorder(root->left);
+    postorder(root->right);
+    cout<< root->data<<" ";
+}
+int main()
+{
+    Node *root = new Node(4);
+    Node *lcr = new Node(8);
+    root->left = lcr;
+    //root->left = new Node(3);
+    root->right = new Node(5);
+    lcr->left = new Node(1);
+    lcr->right = new Node(9);
+    lcr->left->left = new Node(2);
+    lcr->left->right = new Node(7);
+ preorder(root);
+cout<<"\n";
+inorder(root);
+cout<<"\n";
+postorder(root);
+    return 0;
+}
+************************************************
+height of leaf node: 1
+height of root node: max(LH,RH)+1
+HEIGHT OF A TREE
+
+#include <iostream>
+
+using namespace std;
+class Node{
+    public:
+int data;
+Node* left;
+Node* right;
+
+Node(int data){
+    this->data = data;
+    left = NULL;
+    right = NULL;
+}
+
+};
+int Height(Node *root){
+    if(root == NULL){
+        return 0;
+    }
+    int LH = Height(root->left);
+    int RH = Height(root->right);
+    
+    //myheight
+    return 1 + max(LH,RH);
+}
+int main()
+{
+    Node *root = new Node(4);
+    Node *lcr = new Node(8);
+    root->left = lcr;
+    //root->left = new Node(3);
+    root->right = new Node(5);
+    lcr->left = new Node(1);
+    lcr->right = new Node(9);
+    lcr->left->left = new Node(2);
+    lcr->left->right = new Node(7);
+cout<< Height(root);
+    return 0;
+}
+************************************
+MAX VALUE OF TREE
+#include <iostream>
+
+using namespace std;
+class Node{
+    public:
+int data;
+Node* left;
+Node* right;
+
+Node(int data){
+    this->data = data;
+    left = NULL;
+    right = NULL;
+}
+
+};
+int getmax(Node *root){
+    if(root == NULL){
+        return 0;
+    }
+    int LM = getmax(root->left);
+    int RM = getmax(root->right);
+    
+    //myheight
+    return  max(root->data, max(LM, RM));
+}
+int main()
+{
+    Node *root = new Node(4);
+    Node *lcr = new Node(8);
+    root->left = lcr;
+    //root->left = new Node(3);
+    root->right = new Node(5);
+    lcr->left = new Node(1);
+    lcr->right = new Node(9);
+    lcr->left->left = new Node(2);
+    lcr->left->right = new Node(7);
+cout<< getmax(root);
+    return 0;
+}
+******************************
+class Node{
+public :
+int data;
+Node* left;
+Node* right;
+
+Node(int data){
+this->data = data;
+left = NULL;
+right = NULL;
+}
+};
+
+void preorder(Node* root){
+
+if(root == NULL){
+return;
+}
+
+cout << root->data << " ";
+
+preorder(root->left);
+preorder(root->right);
+}
+
+
+void inorder(Node* root){
+
+if(root == NULL){
+return;
+}
+
+inorder(root->left);
+cout << root->data << " ";
+inorder(root->right);
+}
+
+void postOrder(Node* root){
+
+if(root == NULL){
+return;
+}
+
+postOrder(root->left);
+postOrder(root->right);
+cout << root->data << " ";
+}
+
+
+int Height(Node *root){
+
+return (root == NULL) ? 0 : (1 + max(Height(root->left),Height(root->right)));
+}
+
+
+//HW if have negative value then it give 0 so correct it
+int getMax(Node *root){
+
+if(root == NULL){
+return 0;
+}
+
+int LM = getMax(root->left);
+int RM = getMax(root->right);
+
+return max(root->data, max(LM, RM));
+}
+
+
+
+
+int main()
+{
+Node *root = new Node(-4);
+Node* lcr = new Node(-8);
+root->left = lcr;
+root->right = new Node(-5);
+lcr->left = new Node(-1);
+lcr->right = new Node(-9);
+lcr->left->left = new Node(-2);
+lcr->left->right = new Node(-7);
+
+preorder(root);
+cout << '\n';
+inorder(root);
+cout << '\n';
+cout << Height(root);
+cout << '\n';
+cout << "Maximum value present in the tree is : "<< getMax(root);
+return 0;
+}

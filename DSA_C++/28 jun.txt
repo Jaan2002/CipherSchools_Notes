@@ -1,0 +1,124 @@
+//Private members are only accessible within the class , exception for friend function or class
+// Private and protected are same within the same class differnce is when in protected which are accessible in outside the class 
+#include <iostream>
+
+using namespace std;
+class Car{
+    int x;
+    
+    public:
+    Car(){
+        
+    }
+    Car(int x){
+        this->x = x;
+    }
+     int sum(int a , int b){
+         return a+b;
+     }
+     int sum(double a){ 
+         return a;
+     }
+     int sum(int a ){
+         return a;
+     }
+};
+
+int main()
+{
+    Car *obj = new Car();
+    double a = 2;
+    cout<<obj->sum(a,6);
+
+    return 0;
+}
+
+//
+//Private members are only accessible within the class , exception for friend function or class
+// Private and protected are same within the same class differnce is when in protected which are accessible in outside the class 
+#include <iostream>
+
+using namespace std;
+//This is called Run time polymorphism by using virtul keyword
+//overriding same name, return type, parameter  but one func is inbase class and derived class
+//overloading same name, same parametres but differnce in no of parametres
+//polymorphism is two type run time and compile time 
+class Car{
+   
+  
+    public:
+    //using virtual keyword late binding is done 
+    virtual void applybrakes( int c){
+        cout<<"Normal mechanism of applying brakes \n";
+    }
+    
+};
+class superCar : public Car{
+    public:
+
+
+     void applybrakes(){
+         cout<<" Latest technology of applying brakes \n";
+     }
+};
+
+int main()
+{
+    Car *obj = new superCar(); //type is car and stores the supercar .,object is supercar
+   //supercar *obj = new Car(); //derived class can not point to parent class
+   
+   obj->applybrakes();
+   
+
+    return 0;
+}
+
+//*****
+#include <iostream>
+using namespace std;
+//A
+class Car{
+public :
+
+virtual void applyBrakes(){
+cout << "Normal mechanism of applying brakes \n";
+}
+void fun(){
+cout << "Car : Fun() \n";
+}
+virtual void show(int x){
+cout << "Car : show() \n";
+}
+virtual void display(){
+cout << "Car : display() \n";
+}
+};
+// B
+class superCar : public Car {
+
+public :
+
+void fun(){
+cout << "superCar : Fun() \n";
+}
+void applyBrakes(){
+cout << "Latest technology of applying brakes \n";
+}
+void show(){
+cout << "superCar : show() \n";
+}
+virtual void display(int x){
+cout << "superCar : display() \n";
+}
+};
+
+int main() {
+
+Car * obj = new superCar();
+// superCar * obj = new Car(); // derived class can not point to parent class
+
+obj->applyBrakes();
+obj->fun();
+// obj->show();
+obj->display();
+}

@@ -1,0 +1,33 @@
+Same Tree:leetcode(Error)
+class Solution {
+public:
+    bool isSameTree(TreeNode* p, TreeNode* q) {
+        if(p == NULL && q == NULL){
+            return true;
+        }
+      /*  if(p != NULL && q == NULL){
+            return false;
+        }
+        if(p == NULL && q != NULL){
+            return false;
+        }*/
+        if(p == NULL || q == NULL){
+            return false;
+        }
+        if(p->val != q->val){
+            return false;
+        }
+        
+        bool checkleft = isSameTree(p->left , q->left);
+        bool checkright = isSameTree(p->right , q->right);
+         if(checkleft == true && checkright == true){
+             return true;
+         }
+        
+    }
+};
+
+***************************************
+Invert Binary tree:
+lowest common ancestor BST
+Search in Binary search tree(HW)

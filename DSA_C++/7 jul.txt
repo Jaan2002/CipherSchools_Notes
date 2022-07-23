@@ -1,0 +1,45 @@
+#include <iostream>
+#include<queue>
+using namespace std;
+
+int main() {
+queue<int> Q;
+
+for(int i = 0; i < 10; i++)
+Q.push(i);
+
+while(!Q.empty()){
+cout << Q.front() << " ";
+Q.pop();
+}
+
+}
+
+
+MAP
+#include <iostream>
+#include<map>
+using namespace std;
+
+int main() {
+map<int, string> mp;
+
+mp[1] = "sagar";
+mp[2] = "walt";
+mp[3] = "hank";
+mp[0] = "skyler";
+mp[19] = "pinkman";
+
+map<int, string>::iterator itr;
+
+for (itr = mp.begin(); itr != mp.end(); ++itr) {
+cout << '\t' << itr->first << '\t' << itr->second
+<< '\n';
+}
+
+
+for(auto u : mp){
+cout << u.first << " " << u.second << "\n";
+}
+
+}

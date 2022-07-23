@@ -1,0 +1,205 @@
+#include <iostream>
+
+using namespace std;
+class A{
+    protected:
+    
+    int a;
+    int b;
+    
+    public:
+     void sum( int a ,int b){
+         cout<<a + b;
+     }
+};
+ class B: public A{
+     public:
+     
+      void show(int a ,int b){
+          cout<< a << " "<<b<<"\n";
+      }
+ };
+ 
+int main()
+{ 
+   B *obj = new B();
+   obj->show(2 , 3);
+    //obj->sum(4,5);
+    return 0;
+}
+
+///*************
+#include <iostream>
+
+using namespace std;
+class Car{
+    
+   
+    
+    
+     Car( ){
+         cout<<"Car constructor is called \n";
+     }
+};
+ class Audi: public Car{
+     public:
+     
+       Audi( ){// setVptr -> call ctor of base class
+          cout<<" Audi constructor is called \n";
+      }
+ };
+ 
+int main()
+{ 
+   Audi *obj1 = new Audi();
+   Car *obj2 = new Car();
+   
+    return 0;
+}
+//****
+#include <iostream>
+
+using namespace std;
+class Car{
+    public :
+     int tyres;
+     int no_of_seats;
+     
+  
+};
+ class Audi: public Car{
+    int gears;
+    
+     public:
+     
+       Audi( int _gears , int _tyres , int _no_of_seats){// setVptr -> call ctor of base class
+          tyres =_tyres;
+          no_of_seats  = _no_of_seats;
+          gears = _gears;
+          cout<<" Audi constructor is called \n";
+      }
+      
+      void show(){
+          cout<< tyres<<" "<<no_of_seats<<" "<<gears<<"\n" ;
+      }
+ };
+ 
+int main()
+{ 
+   Audi *obj1 = new Audi(6,4,5);
+   //Car *obj2 = new Car();
+   obj1->show();
+    return 0;
+}
+
+//****
+#include <iostream>
+
+using namespace std;
+class Car{
+    public :
+     int tyres;
+     int no_of_seats;
+     
+     
+     Car( int _tyres , int _no_of_seats){
+        cout<<"Car ctor is called \n" ;
+     }
+  
+};
+ class Audi: public Car{
+    int gears;
+    
+     public:
+     
+     // if i make car() constructor without parameter then there  will be no error So If i want param] in Car constructor then I have to  do like this given below  w ith audi constructor
+       Audi( int _gears , int _tyres , int _no_of_seats) : Car(_tyres , _no_of_seats){// setVptr -> call ctor of base class : Car() by default
+          tyres =_tyres;
+          no_of_seats  = _no_of_seats;
+          gears = _gears;
+          cout<<" Audi constructor is called \n";
+      }
+      
+      void show(){
+          cout<< tyres<<" "<<no_of_seats<<" "<<gears<<"\n" ;
+      }
+ };
+ 
+int main()
+{ 
+   Audi *obj1 = new Audi(6,4,5);
+   //Car *obj2 = new Car();
+   obj1->show();
+    return 0;
+}
+
+//************************
+#include <iostream>
+using namespace std;
+
+class Car{
+
+public :
+
+int tyres;
+int no_of_seats;
+int currentGear;
+int totalGears;
+int speed;
+
+Car(int _totalGear){
+tyres = 4;
+no_of_seats = 7;
+currentGear = 0;
+totalGears = _totalGear;
+speed = 0;
+}
+
+void gearUp(){
+
+if(currentGear >= totalGears){
+cout << "\nAlready at Max Gear \n";
+cout << "\n___________________________";
+return;
+}
+
+speed += 20;
+currentGear++;
+}
+
+void gearDown(){
+
+if(currentGear == 0){
+cout << "\nAlready at Min Gear \n";
+cout << "\n___________________________";
+return;
+}
+
+speed -= 20;
+currentGear--;
+}
+
+void display(){
+cout << "\nCar's current speed is " << speed << ".\nThe current Gear is " << currentGear << ".";
+cout << "\n___________________________";
+}
+
+};
+
+
+
+int main() {
+
+Car *obj1 = new Car(2);
+
+obj1->display();
+obj1->gearDown();
+obj1->gearUp();
+obj1->display();
+obj1->gearUp();
+obj1->gearUp();
+obj1->gearUp();
+obj1->display();
+obj1->gearUp();
+obj1->display();
+}

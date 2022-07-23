@@ -1,0 +1,134 @@
+Searching Algos
+Linear Search:traverse the elements in array
+Bineary  Search:
+1 Sort the array
+2 Take middle element
+3Take two pointers
+like Start-pointing the first ele and end->pointing last ele
+4  mid= s+e/2 
+5 then compare mid ele with target elem > or <  than it
+6  acc to that move start and end ele
+untill we get target ele
+
+#include<iostream>
+using namespace std;
+ int main(){
+int n;
+ cin>>n;
+ int arr[n ];
+int target;
+cin>>target;
+for(int i=0;i<n;i++){
+cin>>arr[i];
+}
+ int start =0 ;
+int end = n-1;
+while(start <= end)
+{
+int mid = (start+end)/2;
+if( arr[mid] == target)
+{
+cout<<mid;
+return 0;
+}
+if(arr[mid] > target)  // it goes to left side of array
+{
+ end= mid -1;
+}
+else{
+start = mid +1 ;
+}
+
+}
+cout << "-1";
+}
+
+//BUBBLE SORT
+1 compare each ele to next index ele if ele is greater than 1st index ele than swap them
+2 while traversing an array , if the swap is = 0 then it means array is sorted.
+Time complexity:O(n^2)
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+   int n ,target;
+   cin>>n;
+   int arr[n];
+   cin>>target;
+   for(int i=0;i<n;i++){
+       cin>>arr[i];
+   }
+   for(int i=0; i<n ;i++){
+       int count_swap = 0;
+       for(int j =0; j< n - i - 1 ;j++){
+           if(arr[j] > arr[ j + 1]){
+               swap(arr[j] , arr[ j + 1]);
+               count_swap++;
+           }
+       }
+       if(count_swap == 0){
+           break;
+       }
+   }
+   for( int i=0; i<n ; i++)
+   {
+       cout<< arr[i ]<<" ";
+   }
+   
+}
+
+
+//stable Sort
+1 order of elements should be in sequence after sorting.
+2  4  5^1  5^2 6
+
+// Selection sort
+1 find out value which has min va;ue  ,that must be in first index so  for this we swap them
+#include <iostream>
+
+using namespace std;
+
+int main() {
+int n, target;
+cin >> n;
+int a[n];
+
+for(int i = 0; i < n; i++){
+cin >> a[i];
+}
+
+
+
+for(int i = 0; i < n - 1; i++){
+
+int min_index = i;
+
+for(int j = i + 1; j < n; j++){
+
+if(a[j] < a[min_index]){
+min_index = j;
+}
+
+}
+
+swap(a[i], a[min_index]);
+}
+
+
+for(int i = 0; i < n; i++){
+cout << a[i] << " ";
+}
+
+
+}
+ Time complexity:O( n^2)
